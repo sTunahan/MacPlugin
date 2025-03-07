@@ -10,8 +10,10 @@ import SwiftUI
 @main
 struct pluginTestApp: App {
     var body: some Scene {
-        WindowGroup {
-            ContentView()
+            WindowGroup {
+                ContentView()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+            }
+            .windowStyle(HiddenTitleBarWindowStyle()) // Pencere çerçevesini gizle
         }
-    }
 }

@@ -9,7 +9,11 @@ struct ContentView: View {
 
     var body: some View {
         ZStack {
-            Color.black.edgesIgnoringSafeArea(.all) // Arka planı siyah yap
+            // Arka plana görsel ekle
+                   Image("background") // Görselin ismini buraya yazın
+                       .resizable()
+                       .scaledToFill() // Görseli ekranı dolduracak şekilde ölçeklendir
+                       .edgesIgnoringSafeArea(.all) // Görselin tüm ekranı kaplamasını sağlar
             
             VStack {
                 Text("Giriş Yap")
@@ -19,14 +23,19 @@ struct ContentView: View {
 
                 SecureField("Şifrenizi girin", text: $password)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .background(Color.white.opacity(0.5))
+                    .cornerRadius(10)
                     .padding()
                     .frame(width: 300)
+                    
+                
 
-                Button("Giriş Yap") {
+                Button(action: {
                     checkPassword()
-                }
-                .buttonStyle(.borderedProminent)
-                .padding()
+                }){
+                    Text("Giriş Yap...")
+                }.padding(.top, 20)
+               
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity) // Tüm ekranı kapla
